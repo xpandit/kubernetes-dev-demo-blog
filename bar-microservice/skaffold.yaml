@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: bar-microservice
+build:
+  artifacts:
+  - image: bar-microservice
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - bar-deployment.yaml
+    - bar-service.yaml
