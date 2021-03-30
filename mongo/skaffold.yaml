@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: mongo
+build:
+  artifacts:
+  - image: mongodb
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - mongodb-deployment.yaml
+    - mongodb-secret.yaml
+    - mongodb-service.yaml
