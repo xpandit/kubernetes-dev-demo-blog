@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-microservice-service-deployment
+  labels:
+    app: foo-microservice-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo-microservice-service-pod
+  template:
+    metadata:
+      labels:
+        app: foo-microservice-service-pod
+    spec:
+      containers:
+        - name: foo-microservice
+          image: foo-microservice:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082

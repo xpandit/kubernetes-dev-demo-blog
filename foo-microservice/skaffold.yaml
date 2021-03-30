@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: foo-microservice
+build:
+  artifacts:
+  - image: foo-microservice
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - foo-deployment.yaml
+    - foo-service.yaml
